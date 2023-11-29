@@ -4,7 +4,7 @@ import * as redis from "redis"
 const PORT = 4000;
 const LIST_KEY = "messages";
 
-const createApp = async () => {
+export const createApp = async () => {
     const app = express();
 
     const client = redis.createClient({ url: "redis://localhost:6379" });    // client는 redis
