@@ -10,5 +10,7 @@
     "include": [
         "app/**/*.ts"
     ],
-    "exclude": []
+    "exclude": [
+        "**.test.ts"
+    ]
 }
