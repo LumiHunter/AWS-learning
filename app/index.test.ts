@@ -5,7 +5,8 @@ import * as redis from "redis"
 let app: Express.Application;
 let client: RedisClient
 
-const REDIS_URL = "redis://localhost:6379";
+const REDIS_URL = "redis://default:test_dev@localhost:6380";
+// 테스트용 별도 redis-server. auth는 test_dev, port 6380인 다른 client를 만들어 prod 환경을 건드리는 일이 없도록 한다.
 
 beforeAll(async () => {
     client = redis.createClient({ url: REDIS_URL });
