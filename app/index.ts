@@ -1,10 +1,15 @@
+import dotenv from "dotenv"    // 가장 상위에 환경변수 선언해줘야 함
+dotenv.config();
 import * as redis from "redis"
 import { createApp } from "./app";
 
-const PORT = 4000;
+const { PORT, REDIS_URL } = process.env
+
+if (!PORT) throw new Error("PORT is required")
+if (!REDIS_URL) throw new Error("REDIS_URL is required")
 
 const startServer = async () => {
-    const client = redis.createClient({ url: "redis://localhost:6379" });    // client는 redis
+    const client = redis.createClient({ url: REDIS_URL });    // client는 redis
     await client.connect();    // redis와 express app을 연결.
 
     const app = createApp(client);
